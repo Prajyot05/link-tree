@@ -1,10 +1,11 @@
-var express = require('express')
+import express from 'express';
 import cors from 'cors';
-require('dotenv').config({path: './env'})
+import dotenv from 'dotenv';
 
+dotenv.config({ path: './env' });
 
-import transactionRouter from './routes/transaction.route.js'
-
+//import transactionRouter from './routes/transaction.route.js'
+import accrouter from './routes/account.route.js'
 const app = express(); 
 
  app.use(cors({
@@ -12,14 +13,16 @@ const app = express();
     credentials: true
 }))
 
-app.use("/getTransaction" , transactionRouter)
+//app.use("/getTransaction" , transactionRouter)
+app.use("/account", accrouter)
 
-app.get('/', function (req, res) {  
+ app.get('/', function (req, res) {  
     res.json({
         "name" : "dishant",
     }); 
-}); 
-
-var server = app.listen(3000, function () {  
-    console.log('Node server is running..');  
 });  
+
+
+app.listen(3000, () =>
+    console.log('Example app listening on port 3000!'),
+  );
