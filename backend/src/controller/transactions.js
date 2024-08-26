@@ -1,5 +1,8 @@
-require('dotenv').config();
-const solanaWeb3 = require("@solana/web3.js");
+import dotenv from 'dotenv';
+
+dotenv.config({ path: './env' });
+
+import solanaWeb3 from "@solana/web3.js";
 
 const { PublicKey, Connection } = solanaWeb3;
 
